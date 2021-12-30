@@ -30,7 +30,7 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => {
     return {
-      TrackAPI: new TrackAPI(),
+      trackAPI: new TrackAPI(),
     };
   },
 });
