@@ -12,14 +12,23 @@ const resolvers = {
   Mutation: {
     // increment the number of views for a track
     incrementTrackViews: async (_, { id }, { dataSources }) => {
-      const track = await dataSources.trackAPI.incrementTrackViews(id);
+      try {
+        const track = await dataSources.trackAPI.incrementTrackViews(id);
 
-      return {
-        code: 200,
-        success: true,
-        message: `Views incremented successfully for track ${id}`,
-        track,
-      };
+        return {
+          code: 200,
+          success: true,
+          message: `Views incremented successfully for track ${id}`,
+          track,
+        };
+      } catch (error) {
+        return {
+          code: error.extensions.response.status,
+          success: false,
+          message: error.extensions.response.body,
+          track: null,
+        };
+      }
     },
   },
   Track: {
