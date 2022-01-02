@@ -39,6 +39,11 @@ const resolvers = {
     modules: ({ id }, args, { dataSources }) => {
       return dataSources.trackAPI.getTrackModules(id);
     },
+    // length has been deprecated for the Track page, but we still need to support it until the client is updated
+    durationInSeconds: ({ length }) => length,
+  },
+  Module: {
+    durationInSeconds: ({ length }) => length,
   },
 };
 

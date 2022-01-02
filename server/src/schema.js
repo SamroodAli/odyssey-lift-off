@@ -32,8 +32,10 @@ const typeDefs = gql`
     author: Author!
     "The track's image thumbail"
     thumbnail: String
-    "The track's length"
-    length: Int
+    "The track's length to complete, in seconds"
+    length: Int @deprecated(reason: "Use durationInSeconds instead")
+    "The track's full duration, in seconds"
+    durationInSeconds: Int
     "The total number of track's modules"
     modulesCount: Int
     "The track's complete description, can be in Markdown format"
@@ -50,8 +52,10 @@ const typeDefs = gql`
     id: ID!
     "The module's title"
     title: String!
-    "The module' length in minutes"
-    length: Int
+    "The module' length in seconds"
+    length: Int @deprecated(reason: "Use durationInSeconds instead")
+    "The module's full duration, in seconds"
+    durationInSeconds: Int
   }
 
   "An author is The creator of a track"
