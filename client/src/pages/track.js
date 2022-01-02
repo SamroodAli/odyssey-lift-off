@@ -8,7 +8,7 @@ export const GET_TRACK = gql`
     track(id: $trackId) {
       id
       title
-      length
+      durationInSeconds
 
       author {
         id
